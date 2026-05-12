@@ -206,19 +206,31 @@
        NAVBAR & MENU OPTIMIZATION
     ============================================================ */
     #navbar {
-      height: 96px;
+      height: 80px;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       align-items: center;
     }
 
+    @media (min-width: 1024px) {
+      #navbar {
+        height: 96px;
+      }
+    }
+
     #navbar.scrolled {
-      height: 80px;
+      height: 70px;
       background: rgba(0, 16, 39, 0.92) !important;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (min-width: 1024px) {
+      #navbar.scrolled {
+        height: 80px;
+      }
     }
 
     .nav-link {
@@ -253,9 +265,9 @@
       position: fixed;
       inset: 0;
       z-index: 60;
-      background: rgba(0, 16, 39, 0.98);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(0, 10, 25, 0.98);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -264,6 +276,7 @@
       transform: translateX(100%);
       opacity: 0;
       pointer-events: none;
+      border-left: 1px solid rgba(0, 151, 178, 0.1);
     }
 
     #mobile-menu.open {
@@ -724,11 +737,11 @@
 
             <!-- TITLE & DESCRIPTION -->
             <div class="reveal reveal-delay-2 mb-10 relative">
-              <h1 class="font-display font-black text-white leading-[1.1] mb-8"
-                style="font-size: clamp(1.6rem, 5vw, 2.6rem); letter-spacing: -0.01em;">
+              <h1 class="font-display font-black text-white leading-[1.05] mb-6 sm:mb-8"
+                style="font-size: clamp(1.4rem, 6vw, 2.6rem); letter-spacing: -0.01em;">
                 <span class="font-medium uppercase">CONGRESSO BRASILEIRO DE</span> <br>
-                <span class="text-white uppercase block my-2"
-                  style="font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1;">MAPEAMENTO E</span>
+                <span class="text-white uppercase block my-1.5 sm:my-2"
+                  style="font-size: clamp(2.2rem, 10vw, 4.5rem); line-height: 1;">MAPEAMENTO E</span>
                 <span class="brand-gradient-text uppercase">INTELIGÊNCIA GEOGRÁFICA</span>
               </h1>
               <p class="text-brand-white/80 text-lg sm:text-xl font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed">
@@ -787,7 +800,7 @@
               <form action="/api/register" method="POST" class="space-y-4 registration-form">
                 <div class="group">
                   <label for="f-name"
-                    class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Nome
+                    class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Nome
                     Completo</label>
                   <input type="text" id="f-name" name="nome" placeholder="Seu nome" required
                     class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white placeholder-brand-white/10 focus:outline-none focus:border-brand-green1 transition-all text-sm">
@@ -795,22 +808,22 @@
 
                 <div class="group">
                   <label for="f-email"
-                    class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">E-mail
+                    class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">E-mail
                     Profissional</label>
                   <input type="email" id="f-email" name="email" placeholder="seu@email.com" required
                     class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white placeholder-brand-white/10 focus:outline-none focus:border-brand-teal transition-all text-sm">
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div class="group">
                     <label for="f-tel"
-                      class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Telefone</label>
+                      class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Telefone</label>
                     <input type="tel" id="f-tel" name="telefone" placeholder="(00) 00000-0000" required
                       class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white placeholder-brand-white/10 focus:outline-none focus:border-brand-green1 transition-all text-sm tel-input">
                   </div>
                   <div class="group">
                     <label for="f-area"
-                      class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">Sua
+                      class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">Sua
                       Área</label>
                     <select id="f-area" name="area" required
                       class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white focus:outline-none focus:border-brand-teal transition-all text-sm appearance-none">
@@ -836,7 +849,7 @@
                 class="text-brand-white/30 text-[9px] uppercase tracking-[0.5em] mb-6 font-black text-center lg:text-left">
                 Faltam para o início</p>
 
-              <div class="grid grid-cols-4 gap-3">
+              <div class="grid grid-cols-4 gap-2 sm:gap-3">
                 <div class="bg-brand-white/5 border border-brand-white/10 signature-shape-sm p-4 text-center">
                   <div class="font-impact text-3xl sm:text-4xl text-brand-green1 leading-none mb-1" id="cd-days">--
                   </div>
@@ -872,7 +885,7 @@
     <!-- ============================================================
          SOBRE O CONGRESSO
     ============================================================ -->
-    <section id="sobre" class="py-20 bg-[#F5F6F7]" aria-label="Sobre o congresso">
+    <section id="sobre" class="py-16 sm:py-20 lg:py-24 bg-[#F5F6F7]" aria-label="Sobre o congresso">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="text-center mb-16 reveal">
@@ -979,7 +992,7 @@
     <!-- ============================================================
          PÚBLICO-ALVO
     ============================================================ -->
-    <section id="publico" class="py-24 bg-brand-dark relative overflow-hidden" aria-label="Público-alvo do congresso">
+    <section id="publico" class="py-16 sm:py-24 bg-brand-dark relative overflow-hidden" aria-label="Público-alvo do congresso">
       <div class="absolute top-0 right-0 glow-line-h w-1/3 opacity-30"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1050,7 +1063,7 @@
     <!-- ============================================================
          PALESTRANTES
     ============================================================ -->
-    <section id="palestrantes" class="py-24 bg-[#F5F6F7] relative overflow-hidden"
+    <section id="palestrantes" class="py-16 sm:py-24 bg-[#F5F6F7] relative overflow-hidden"
       aria-label="Palestrantes do congresso">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -1063,8 +1076,8 @@
           <p class="text-gray-600 text-lg max-w-2xl mx-auto font-medium">Os maiores especialistas do mercado em mapeamento avançado, geotecnologias e inteligência geográfica.</p>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-8">
-          <article class="speaker-card reveal reveal-delay-1 group cursor-pointer" style="width: 280px;">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
+          <article class="reveal reveal-delay-1 group cursor-pointer w-full">
             <div
               class="relative aspect-[4/5] overflow-hidden signature-shape border border-gray-200 group-hover:border-brand-green1 transition-all">
               <img src="public/faculty/vitor.png" alt="Vitor do Sacramento"
@@ -1080,7 +1093,7 @@
             </div>
           </article>
 
-          <article class="speaker-card reveal reveal-delay-2 group cursor-pointer" style="width: 280px;">
+          <article class="reveal reveal-delay-2 group cursor-pointer w-full">
             <div
               class="relative aspect-[4/5] overflow-hidden signature-shape border border-gray-200 group-hover:border-brand-green1 transition-all">
               <img src="public/faculty/rodolfo.png" alt="Rodolfo Finatti"
@@ -1095,7 +1108,7 @@
             </div>
           </article>
 
-          <article class="speaker-card reveal reveal-delay-3 group cursor-pointer" style="width: 280px;">
+          <article class="reveal reveal-delay-3 group cursor-pointer w-full">
             <div
               class="relative aspect-[4/5] overflow-hidden signature-shape border border-gray-200 group-hover:border-brand-green1 transition-all">
               <img src="public/faculty/henrique.png" alt="Henrique Gonzalez"
@@ -1110,7 +1123,7 @@
             </div>
           </article>
 
-          <article class="speaker-card reveal reveal-delay-4 group cursor-pointer" style="width: 280px;">
+          <article class="reveal reveal-delay-4 group cursor-pointer w-full">
             <div
               class="relative aspect-[4/5] overflow-hidden signature-shape border border-gray-200 group-hover:border-brand-green1 transition-all">
               <img src="public/faculty/matheus.png" alt="Matheus Villela"
@@ -1128,7 +1141,7 @@
       </div>
     </section>
 
-    <section id="palestras" class="py-24 bg-brand-dark relative overflow-hidden" aria-label="Programação do congresso">
+    <section id="palestras" class="py-16 sm:py-24 bg-brand-dark relative overflow-hidden" aria-label="Programação do congresso">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <div class="text-center mb-20 reveal">
@@ -1210,7 +1223,7 @@
     <!-- ============================================================
          CERTIFICADO
     ============================================================ -->
-    <section id="certificado" class="py-32 bg-[#F5F6F7] relative overflow-hidden"
+    <section id="certificado" class="py-16 sm:py-32 bg-[#F5F6F7] relative overflow-hidden"
       aria-label="Certificado de participação">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid lg:grid-cols-2 gap-20 items-center">
@@ -1276,7 +1289,7 @@
     <!-- ============================================================
          INGRESSOS
     ============================================================ -->
-    <section id="ingressos" class="py-24 bg-brand-dark relative overflow-hidden" aria-label="Ingressos e preços">
+    <section id="ingressos" class="py-16 sm:py-24 bg-brand-dark relative overflow-hidden" aria-label="Ingressos e preços">
       <div class="absolute bottom-0 left-0 glow-line-h w-full opacity-20"></div>
 
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1297,9 +1310,9 @@
           <!-- Básico -->
           <div
             class="reveal reveal-delay-1 bg-brand-white/5 signature-shape p-10 border border-brand-white/10 flex flex-col hover:border-brand-teal/40 transition-all group">
-            <p class="font-black text-brand-teal text-[10px] uppercase tracking-[0.3em] mb-6">Ingresso Básico</p>
+            <p class="font-black text-brand-teal text-[11px] uppercase tracking-[0.3em] mb-6">Ingresso Básico</p>
             <div class="mb-2">
-              <span class="font-impact text-brand-white" style="font-size:4.5rem; line-height: 1;">R$ 397</span>
+              <span class="font-impact text-brand-white" style="font-size: clamp(3rem, 15vw, 4.5rem); line-height: 1;">R$ 397</span>
               <span class="text-brand-white/40 text-sm font-bold">,00</span>
             </div>
             <p class="text-brand-white/30 text-xs font-black uppercase tracking-widest mb-10">Lote de Pré-Venda</p>
@@ -1341,9 +1354,9 @@
               class="absolute -top-4 left-1/2 -translate-x-1/2 brand-gradient-bg text-brand-dark font-black text-[9px] px-6 py-2 signature-shape-sm uppercase tracking-widest whitespace-nowrap shadow-xl">
               MAIS VENDIDO</div>
 
-            <p class="font-black text-brand-green1 text-[10px] uppercase tracking-[0.3em] mb-6">Ingresso Pro</p>
+            <p class="font-black text-brand-green1 text-[11px] uppercase tracking-[0.3em] mb-6">Ingresso Pro</p>
             <div class="mb-2">
-              <span class="font-impact text-brand-white" style="font-size:4.5rem; line-height: 1;">R$ 497</span>
+              <span class="font-impact text-brand-white" style="font-size: clamp(3rem, 15vw, 4.5rem); line-height: 1;">R$ 497</span>
               <span class="text-brand-white/40 text-sm font-bold">,00</span>
             </div>
             <p class="text-brand-white/30 text-xs font-black uppercase tracking-widest mb-10">Lote de Pré-Venda</p>
@@ -1386,7 +1399,7 @@
     <!-- ============================================================
          FAQ
     ============================================================ -->
-    <section id="faq" class="py-24 bg-[#F5F6F7] relative overflow-hidden" aria-label="Perguntas frequentes">
+    <section id="faq" class="py-16 sm:py-24 bg-[#F5F6F7] relative overflow-hidden" aria-label="Perguntas frequentes">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <div class="text-center mb-20 reveal">
@@ -1520,7 +1533,7 @@
       <form action="/api/register" method="POST" class="space-y-4 registration-form">
         <div class="group">
           <label for="m-name"
-            class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Nome
+            class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Nome
             Completo</label>
           <input type="text" id="m-name" name="nome" placeholder="Seu nome" required
             class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white placeholder-brand-white/10 focus:outline-none focus:border-brand-green1 transition-all text-sm">
@@ -1528,22 +1541,22 @@
 
         <div class="group">
           <label for="m-email"
-            class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">E-mail
+            class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">E-mail
             Profissional</label>
           <input type="email" id="m-email" name="email" placeholder="seu@email.com" required
             class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white placeholder-brand-white/10 focus:outline-none focus:border-brand-teal transition-all text-sm">
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="group">
             <label for="m-tel"
-              class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Telefone</label>
+              class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-green1 transition-colors">Telefone</label>
             <input type="tel" id="m-tel" name="telefone" placeholder="(00) 00000-0000" required
               class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white placeholder-brand-white/10 focus:outline-none focus:border-brand-green1 transition-all text-sm tel-input">
           </div>
           <div class="group">
             <label for="m-area"
-              class="block text-brand-white/40 font-black text-[9px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">Sua
+              class="block text-brand-white/40 font-black text-[11px] uppercase tracking-widest mb-1.5 group-focus-within:text-brand-teal transition-colors">Sua
               Área</label>
             <select id="m-area" name="area" required
               class="w-full bg-brand-dark/50 border border-brand-white/10 signature-shape-sm px-5 py-3.5 text-brand-white focus:outline-none focus:border-brand-teal transition-all text-sm appearance-none">
@@ -1568,7 +1581,7 @@
     <!-- ============================================================
          REALIZAÇÃO
     ============================================================ -->
-    <section class="py-32 bg-brand-dark relative overflow-hidden" aria-label="Realização do congresso">
+    <section class="py-16 sm:py-32 bg-brand-dark relative overflow-hidden" aria-label="Realização do congresso">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal relative z-10">
         <p class="text-brand-white/50 font-black text-[10px] uppercase tracking-[0.4em] mb-6">Realização</p>
         <img src="public/logo-ambientalpro.png" alt="Ambiental Pro" class="h-20 sm:h-24 lg:h-32 mx-auto mb-10 object-contain">
@@ -1685,11 +1698,11 @@
         <!-- Básico -->
         <div
           class="bg-brand-white/5 signature-shape p-10 border border-brand-white/10 flex flex-col hover:border-brand-teal/40 transition-all group">
-          <p class="font-black text-brand-teal text-[10px] uppercase tracking-[0.3em] mb-6">Ingresso Básico</p>
+          <p class="font-black text-brand-teal text-[11px] uppercase tracking-[0.3em] mb-6">Ingresso Básico</p>
           <div class="mb-2">
-            <span class="font-impact text-brand-white" style="font-size:3.5rem; line-height: 1;">R$ 397</span>
+            <span class="font-impact text-brand-white" style="font-size: clamp(2.5rem, 12vw, 3.5rem); line-height: 1;">R$ 397</span>
           </div>
-          <p class="text-brand-white/30 text-[10px] font-black uppercase tracking-widest mb-8">Lote de Pré-Venda</p>
+          <p class="text-brand-white/30 text-[11px] font-black uppercase tracking-widest mb-8">Lote de Pré-Venda</p>
           
           <ul class="space-y-3 mb-8 text-left">
             <li class="flex items-center gap-3 text-brand-white/60 text-[10px] font-bold uppercase tracking-wider">
@@ -1723,11 +1736,11 @@
           <div
             class="absolute -top-4 left-1/2 -translate-x-1/2 brand-gradient-bg text-brand-dark font-black text-[8px] px-4 py-1.5 signature-shape-sm uppercase tracking-widest">
             RECOMENDADO</div>
-          <p class="font-black text-brand-green1 text-[10px] uppercase tracking-[0.3em] mb-6">Ingresso Pro</p>
+          <p class="font-black text-brand-green1 text-[11px] uppercase tracking-[0.3em] mb-6">Ingresso Pro</p>
           <div class="mb-2">
-            <span class="font-impact text-brand-white" style="font-size:3.5rem; line-height: 1;">R$ 497</span>
+            <span class="font-impact text-brand-white" style="font-size: clamp(2.5rem, 12vw, 3.5rem); line-height: 1;">R$ 497</span>
           </div>
-          <p class="text-brand-white/30 text-[10px] font-black uppercase tracking-widest mb-8">Lote de Pré-Venda</p>
+          <p class="text-brand-white/30 text-[11px] font-black uppercase tracking-widest mb-8">Lote de Pré-Venda</p>
 
           <ul class="space-y-3 mb-8 text-left">
             <li class="flex items-center gap-3 text-brand-white/90 text-[10px] font-bold uppercase tracking-wider">
