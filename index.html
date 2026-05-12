@@ -642,7 +642,7 @@
 
         <!-- CTA + Hamburger -->
         <div class="flex items-center gap-5">
-          <a href="#inscricao"
+          <a href="#ingressos"
             class="hidden sm:inline-flex items-center brand-gradient-bg text-white font-bold text-xs uppercase tracking-widest px-8 py-3 signature-shape-sm hover:scale-105 transition-all shadow-lg shadow-brand-teal/20">
             GARANTIR INGRESSO
           </a>
@@ -675,7 +675,7 @@
         <a href="#palestras" class="mobile-link" onclick="closeMobileMenu()">Palestras</a>
         <a href="#sobre" class="mobile-link" onclick="closeMobileMenu()">Sobre o Congresso</a>
         <a href="#faq" class="mobile-link" onclick="closeMobileMenu()">FAQ</a>
-        <a href="#inscricao"
+        <a href="#ingressos"
           class="mobile-link mt-8 bg-[#FFD11A] text-[#1B6E6E] px-10 py-4 rounded-full !opacity-100 !transform-none"
           onclick="closeMobileMenu()">QUERO PARTICIPAR</a>
       </div>
@@ -759,7 +759,7 @@
 
             <!-- BOTÕES -->
             <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-6 reveal">
-              <a href="#inscricao"
+              <a href="#ingressos"
                 class="group relative inline-flex items-center justify-center gap-4 brand-gradient-bg text-white font-black text-sm sm:text-base uppercase tracking-[0.2em] px-14 py-6 signature-shape shadow-[0_20px_50px_rgba(49,168,168,0.3)] hover:scale-105 transition-all active:scale-95">
                 <span>INSCREVA-SE AGORA</span>
                 <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24"
@@ -886,20 +886,16 @@
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
           <div class="reveal reveal-delay-1 bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
             <div class="stat-num">2</div>
             <div class="text-[#0097b2] font-semibold text-sm uppercase tracking-wide mt-1">Dias de Evento</div>
           </div>
           <div class="reveal reveal-delay-2 bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
-            <div class="stat-num">+500</div>
-            <div class="text-[#0097b2] font-semibold text-sm uppercase tracking-wide mt-1">Participantes</div>
-          </div>
-          <div class="reveal reveal-delay-3 bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
             <div class="stat-num">16h</div>
             <div class="text-[#0097b2] font-semibold text-sm uppercase tracking-wide mt-1">de Certificação</div>
           </div>
-          <div class="reveal reveal-delay-4 bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 flex flex-col justify-center overflow-hidden">
+          <div class="reveal reveal-delay-3 bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 flex flex-col justify-center overflow-hidden">
             <div class="stat-num !text-xl sm:!text-3xl mb-1">Presencial</div>
             <div class="text-[#0097b2] font-semibold text-sm uppercase tracking-wide mt-1">Networking Real</div>
           </div>
@@ -928,7 +924,7 @@
               </p>
             </blockquote>
 
-            <a href="#inscricao"
+            <a href="#ingressos"
               class="inline-flex items-center gap-3 brand-gradient-bg text-brand-dark font-black text-sm uppercase tracking-widest px-10 py-5 signature-shape shadow-lg shadow-brand-green1/20 hover:scale-105 transition-all">
               GARANTIR MINHA VAGA
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1564,7 +1560,7 @@
         <p class="text-brand-white/80 text-xl max-w-2xl mx-auto leading-relaxed mb-12 font-medium break-words">
           A Ambiental Pro é o maior ecossistema de geotecnologias e inteligência ambiental da América Latina.
         </p>
-        <a href="#inscricao"
+        <a href="#ingressos"
           class="inline-flex items-center gap-3 brand-gradient-bg text-brand-dark px-12 py-5 signature-shape font-black text-xs uppercase tracking-widest shadow-2xl hover:scale-105 transition-all">
           GARANTIR MINHA VAGA
           <svg class="w-5 h-5 text-brand-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1648,7 +1644,7 @@
 
       <div class="absolute top-0 right-0 p-8">
         <button
-          onclick="document.getElementById('success-modal').classList.remove('open'); document.body.style.overflow = '';"
+          onclick="closeSuccessModal()"
           class="text-brand-white/20 hover:text-brand-white transition-colors">
           <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -1710,6 +1706,7 @@
     // UTMS & ACTIVE CAMPAIGN INTEGRATION
     // ============================================================
     let currentContactId = null;
+    let pendingTicket = null;
 
     function getUtms() {
       const utms = {};
@@ -1767,8 +1764,16 @@
           // Como o mode 'no-cors' impede a leitura da resposta, assumimos que deu certo se não houve erro de rede
           currentContactId = formData.get('email'); // Usando e-mail como ID provisório para não quebrar a etapa de compra
 
-          // Redirecionar para o WhatsApp após preenchimento
-          window.location.href = 'https://wa.link/6on3xe';
+          // Redirecionamento Inteligente
+          if (pendingTicket === 'basico') {
+            window.location.href = 'https://pay.voompcreators.com.br/14712/offer/4iFfHo';
+          } else if (pendingTicket === 'pro') {
+            window.location.href = 'https://pay.voompcreators.com.br/14712/offer/OSkouA';
+          } else {
+            // Se preencheu o formulário geral sem escolher ticket, abre o modal de escolha
+            closeRegistrationModal(); // Fecha o modal de cadastro se estiver aberto
+            openSuccessModal();
+          }
           
         } catch (err) {
           alert('Erro de conexão ao enviar os dados. Verifique sua internet.');
@@ -1781,27 +1786,18 @@
     });
 
     async function selectTicket(type) {
-      if (!currentContactId) return;
+      pendingTicket = type;
 
-      const tagName = type === 'basico'
-        ? '[CBMIG] Basico'
-        : '[CBMIG] PRO';
+      if (!currentContactId) {
+        openRegistrationModal();
+        return;
+      }
 
-      const btn = document.querySelector(`.btn-${type}`);
-      const originalText = btn.textContent;
-      btn.textContent = 'CARREGANDO...';
-      btn.disabled = true;
-
-      try {
-        // Redirecionamento para o checkout (insira os links finais aqui)
-        if (type === 'basico') {
-          window.location.href = '#';
-        } else {
-          window.location.href = '#';
-        }
-      } catch (err) {
-        console.error('Error:', err);
-        window.location.href = '#';
+      // Se já tiver o ID, redireciona direto
+      if (type === 'basico') {
+        window.location.href = 'https://pay.voompcreators.com.br/14712/offer/4iFfHo';
+      } else {
+        window.location.href = 'https://pay.voompcreators.com.br/14712/offer/OSkouA';
       }
     }
 
@@ -1969,13 +1965,29 @@
       }
     }
 
-    // Intercept links to #inscricao
-    document.querySelectorAll('a[href="#inscricao"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        openRegistrationModal();
-      });
-    });
+    function openSuccessModal() {
+      const modal = document.getElementById('success-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+          modal.classList.add('open');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeSuccessModal() {
+      const modal = document.getElementById('success-modal');
+      if (modal) {
+        modal.classList.remove('open');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = '';
+        }, 300);
+      }
+    }
 
     // ============================================================
     // STICKY CTA VISIBILITY
