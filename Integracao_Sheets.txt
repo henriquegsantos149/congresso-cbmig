@@ -1,0 +1,67 @@
+// ==============================================================================
+// SCRIPT DE INTEGRAÇÃO: LANDING PAGE -> GOOGLE SHEETS
+// ==============================================================================
+// 1. Abra sua planilha do Google Sheets onde deseja receber os dados.
+// 2. No menu superior, vá em "Extensões" > "Apps Script".
+// 3. Apague todo o código existente na tela que abrir e cole este código abaixo.
+// 4. Clique em "Implantar" (botão azul no topo direito) > "Nova implantação".
+// 5. Selecione o tipo clicando na engrenagem: "App da Web".
+// 6. Preencha a descrição (ex: Integracao LP).
+// 7. Em "Executar como", escolha "Eu (seu email)".
+// 8. Em "Quem pode acessar", escolha "Qualquer pessoa".
+// 9. Clique em "Implantar" (autorize os acessos na janela do Google que aparecer).
+// 10. Copie a "URL do app da Web" gerada e cole no seu index.html onde diz 'COLE_A_URL_AQUI'.
+
+function doPost(e) {
+  try {
+    // Pegar a aba ativa da planilha
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    
+    // Ler os dados enviados pela Landing Page (em JSON)
+    var data = JSON.parse(e.postData.contents);
+    
+    // Se a planilha estiver vazia, cria o cabeçalho na primeira linha
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        "Data/Hora", 
+        "Nome", 
+        "E-mail", 
+        "Telefone", 
+        "Área de Atuação", 
+        "Nível de Graduação",
+        "UTM Source",
+        "UTM Medium",
+        "UTM Campaign"
+      ]);
+      
+      // Congelar a primeira linha e colocar em negrito
+      sheet.getRange("A1:I1").setFontWeight("bold");
+      sheet.setFrozenRows(1);
+    }
+    
+    // Obter data e hora atual
+    var dataHora = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd/MM/yyyy HH:mm:ss");
+    
+    // Adicionar a nova linha com as informações do contato
+    sheet.appendRow([
+      dataHora,
+      data.name || "",
+      data.email || "",
+      data.phone || "",
+      data.area || "",
+      data.graduacao || "",
+      data.utm_source || "",
+      data.utm_medium || "",
+      data.utm_campaign || ""
+    ]);
+    
+    // Retornar sucesso
+    return ContentService.createTextOutput(JSON.stringify({"success": true, "message": "Salvo com sucesso"}))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (error) {
+    // Em caso de erro
+    return ContentService.createTextOutput(JSON.stringify({"success": false, "error": error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
