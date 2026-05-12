@@ -1719,7 +1719,7 @@
       const params = new URLSearchParams(window.location.search);
       for (const [key, value] of params.entries()) {
         const lowerKey = key.toLowerCase();
-        if (lowerKey.startsWith('utm_') || lowerKey.startsWith('cblcam_')) {
+        if (lowerKey.startsWith('utm_') || lowerKey.startsWith('cbmig_')) {
           utms[key] = value;
         }
       }
