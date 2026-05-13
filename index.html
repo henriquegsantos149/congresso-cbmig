@@ -93,6 +93,7 @@
     .brand-gradient-text {
       background: linear-gradient(90deg, #7ed957 0%, #3fb884 50%, #0097b2 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -1198,8 +1199,7 @@
               class="bg-brand-dark/50 signature-shape-sm p-8 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
 
               <div>
-                <p class="text-brand-teal font-black text-sm uppercase tracking-widest mb-2">Full Day · 09h às 17h
-                </p>
+
                 <p class="font-bold text-brand-white text-xl mb-3">Aquisição e Processamento de Dados Aerofotogramétricos com Drone RTK/PPK</p>
                 <p class="text-brand-white/70 text-base leading-relaxed">Dia exclusivo para inscritos no Ingresso Pro.
                   Abordaremos desde o plano de voo até o processamento inicial de nuvem de pontos e ortomosaico.</p>
@@ -1219,35 +1219,97 @@
                   Networking</p>
               </div>
             </div>
-            <div class="space-y-6">
+            <div class="space-y-4">
 
-              <div
-                class="bg-brand-dark/50 signature-shape-sm p-8 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
-
-                <div>
-                  <p class="text-brand-green1 font-black text-sm uppercase tracking-widest mb-2">10h às 11h</p>
-                  <p class="font-bold text-brand-white text-xl mb-3">Inteligência Geográfica Aplicada ao Setor Ambiental: Casos Reais e Tendências</p>
-                  <p class="text-brand-white/70 text-base font-medium leading-relaxed mt-2">Palestrante: Vitor Sacramento</p>
+              <!-- 08:00 - 09:00 -->
+              <div class="bg-brand-dark/40 signature-shape-sm p-6 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">08h às 09h</p>
+                  <p class="font-bold text-brand-white text-lg">Credenciamento dos participantes + café + abertura</p>
                 </div>
               </div>
 
-              <div
-                class="bg-brand-dark/50 signature-shape-sm p-8 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
-
-                <div>
-                  <p class="text-brand-green1 font-black text-sm uppercase tracking-widest mb-2">15h às 16h</p>
-                  <p class="font-bold text-brand-white text-xl mb-3">Precisão Posicional em Aerofotogrametria com RPAS: limites, desafios e boas práticas</p>
-                  <p class="text-brand-white/70 text-base font-medium leading-relaxed mt-2">Palestrante: Matheus Villela</p>
+              <!-- 09:00 - 10:00 -->
+              <div class="bg-brand-dark/50 signature-shape-sm p-6 border border-brand-white/10 flex items-start gap-6 hover:border-brand-teal/30 transition-all shadow-lg">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">09h às 10h</p>
+                  <p class="font-bold text-brand-white text-lg">Palestra</p>
                 </div>
               </div>
-              <div
-                class="bg-brand-dark/50 signature-shape-sm p-8 border border-brand-white/5 border-dashed flex items-center justify-center opacity-70 transition-all hover:opacity-100">
 
-                <div class="w-full text-center py-4">
-                  <p class="font-bold text-brand-white/80 text-lg mb-2">Demais temas a confirmar</p>
-                  <p class="text-brand-white/50 text-sm leading-relaxed">Em breve divulgaremos a programação completa com os demais palestrantes e horários.</p>
+              <!-- 10:00 - 11:00 -->
+              <div class="bg-brand-dark/50 signature-shape-sm p-6 border border-brand-white/10 flex items-start gap-6 hover:border-brand-teal/30 transition-all shadow-lg">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">10h às 11h</p>
+                  <p class="font-bold text-brand-white text-lg">Palestra</p>
                 </div>
               </div>
+
+              <!-- 11:00 - 12:00 -->
+              <div class="bg-brand-dark/40 signature-shape-sm p-6 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">11h às 12h</p>
+                  <p class="font-bold text-brand-white text-lg">GeoTech Show</p>
+                </div>
+              </div>
+
+              <!-- 12:00 - 14:00 -->
+              <div class="bg-brand-dark/30 signature-shape-sm p-5 border border-brand-white/5 border-dashed flex items-start gap-6 opacity-80">
+                <div class="w-full">
+                  <p class="text-brand-teal font-black text-xs uppercase tracking-widest mb-1">12h às 14h</p>
+                  <p class="font-bold text-brand-white/70 text-lg">Almoço</p>
+                </div>
+              </div>
+
+              <!-- 14:00 - 15:00 -->
+              <div class="bg-brand-dark/50 signature-shape-sm p-6 border border-brand-white/10 flex items-start gap-6 hover:border-brand-teal/30 transition-all shadow-lg">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">14h às 15h</p>
+                  <p class="font-bold text-brand-white text-lg">Palestra</p>
+                </div>
+              </div>
+
+              <!-- 15:00 - 16:00 -->
+              <div class="bg-brand-dark/50 signature-shape-sm p-6 border border-brand-white/10 flex items-start gap-6 hover:border-brand-teal/30 transition-all shadow-lg">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">15h às 16h</p>
+                  <p class="font-bold text-brand-white text-lg">Palestra</p>
+                </div>
+              </div>
+
+              <!-- 16:00 - 17:30 -->
+              <div class="bg-brand-dark/30 signature-shape-sm p-5 border border-brand-white/5 border-dashed flex items-start gap-6 opacity-80">
+                <div class="w-full">
+                  <p class="text-brand-teal font-black text-xs uppercase tracking-widest mb-1">16h às 17h30</p>
+                  <p class="font-bold text-brand-white/70 text-lg">Coffee Break</p>
+                </div>
+              </div>
+
+              <!-- 17:30 - 18:00 -->
+              <div class="bg-brand-dark/40 signature-shape-sm p-6 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">17h30 às 18h</p>
+                  <p class="font-bold text-brand-white text-lg">Entrega das placas 10K e Diplomas</p>
+                </div>
+              </div>
+
+
+              <!-- 18:20 - 19:50 -->
+              <div class="bg-brand-dark/40 signature-shape-sm p-6 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">18h20 às 19h50</p>
+                  <p class="font-bold text-brand-white text-lg">Mesa redonda</p>
+                </div>
+              </div>
+
+              <!-- 19:50 - 20:00 -->
+              <div class="bg-brand-dark/40 signature-shape-sm p-6 border border-brand-white/5 flex items-start gap-6 hover:border-brand-teal/30 transition-all">
+                <div class="w-full">
+                  <p class="text-brand-green1 font-black text-xs uppercase tracking-widest mb-1">19h50 às 20h</p>
+                  <p class="font-bold text-brand-white text-lg">Fechamento</p>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
