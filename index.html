@@ -260,50 +260,63 @@
       width: 100%;
     }
 
-    /* Mobile Menu (Slide-over) */
+    /* Mobile Menu (Dropdown Panel) */
     #mobile-menu {
       position: fixed;
-      inset: 0;
+      top: 72px;
+      right: 12px;
       z-index: 9999;
-      background: rgba(0, 10, 25, 0.99);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.35s ease;
-      transform: translateX(100%);
+      width: min(320px, calc(100vw - 24px));
+      background: rgba(0, 10, 25, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 151, 178, 0.25);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(126, 217, 87, 0.1);
+      padding: 8px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+      transform: translateY(-10px) scale(0.96);
+      transform-origin: top right;
       opacity: 0;
       pointer-events: none;
-      overflow-y: auto;
-      padding: env(safe-area-inset-top, 20px) 24px env(safe-area-inset-bottom, 20px);
     }
 
     #mobile-menu.open {
-      transform: translateX(0);
+      transform: translateY(0) scale(1);
       opacity: 1;
       pointer-events: auto;
     }
 
     .mobile-link {
+      display: block;
       font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.9);
-      margin: 0.5rem 0;
-      padding: 0.5rem 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 12px 16px;
+      border-radius: 10px;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: background 0.2s ease, color 0.2s ease;
+      opacity: 1;
+      transform: none;
     }
 
-    #mobile-menu.open .mobile-link {
-      opacity: 1;
-      transform: translateY(0);
+    .mobile-link:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #7ed957;
+    }
+
+    /* Backdrop click-outside to close */
+    #menu-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      display: none;
+    }
+
+    #menu-backdrop.open {
+      display: block;
     }
 
     /* Delays para animação sequencial no menu mobile */
@@ -677,36 +690,25 @@
       </div>
     </div>
 
-    <!-- Mobile menu (Full-screen overlay) -->
-    <div id="mobile-menu" aria-label="Menu mobile" role="dialog" aria-modal="true">
-      <!-- Close button -->
-      <button onclick="closeMobileMenu()"
-        class="absolute top-5 right-5 p-2 text-white/60 hover:text-white transition-colors z-10"
-        aria-label="Fechar menu">
-        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+    <!-- Backdrop (click outside to close) -->
+    <div id="menu-backdrop" onclick="closeMobileMenu()"></div>
 
-      <!-- Content -->
-      <div class="flex flex-col items-center text-center w-full max-w-sm mx-auto">
-        <img src="/logo.png" alt="CBMIG 2026" class="h-14 mb-8 opacity-80">
-
-        <div class="w-16 h-px bg-brand-teal/30 mb-6"></div>
-
-        <a href="#certificado" class="mobile-link hover:text-brand-green1" onclick="closeMobileMenu()">Certificado</a>
-        <a href="#publico" class="mobile-link hover:text-brand-green1" onclick="closeMobileMenu()">Público-Alvo</a>
-        <a href="#palestrantes" class="mobile-link hover:text-brand-green1" onclick="closeMobileMenu()">Palestrantes</a>
-        <a href="#palestras" class="mobile-link hover:text-brand-green1" onclick="closeMobileMenu()">Palestras</a>
-        <a href="#sobre" class="mobile-link hover:text-brand-green1" onclick="closeMobileMenu()">Sobre</a>
-        <a href="#faq" class="mobile-link hover:text-brand-green1" onclick="closeMobileMenu()">FAQ</a>
-
-        <div class="w-16 h-px bg-brand-teal/30 my-6"></div>
-
-        <a href="#ingressos"
-          class="mobile-link !opacity-100 !transform-none brand-gradient-bg text-brand-dark font-black px-10 py-4 signature-shape-sm !text-base tracking-widest"
-          onclick="closeMobileMenu()">QUERO PARTICIPAR</a>
-      </div>
+    <!-- Mobile menu (Dropdown panel) -->
+    <div id="mobile-menu" aria-label="Menu mobile" role="dialog">
+      <!-- Links -->
+      <a href="#certificado" class="mobile-link" onclick="closeMobileMenu()">Certificado</a>
+      <a href="#publico" class="mobile-link" onclick="closeMobileMenu()">Público-Alvo</a>
+      <a href="#palestrantes" class="mobile-link" onclick="closeMobileMenu()">Palestrantes</a>
+      <a href="#palestras" class="mobile-link" onclick="closeMobileMenu()">Palestras</a>
+      <a href="#sobre" class="mobile-link" onclick="closeMobileMenu()">Sobre</a>
+      <a href="#faq" class="mobile-link" onclick="closeMobileMenu()">FAQ</a>
+      <!-- Divider -->
+      <div style="height:1px; background: rgba(0,151,178,0.2); margin: 6px 8px;"></div>
+      <!-- CTA -->
+      <a href="#ingressos"
+        class="mobile-link brand-gradient-bg text-brand-dark font-black text-center"
+        style="border-radius:10px; margin-top:2px;"
+        onclick="closeMobileMenu()">QUERO PARTICIPAR</a>
     </div>
   </nav>
 
@@ -1945,28 +1947,31 @@
     }, { passive: true });
 
     // ============================================================
-    // MOBILE MENU (OVERLAY LOGIC)
+    // MOBILE MENU (DROPDOWN PANEL)
     // ============================================================
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const menuBackdrop = document.getElementById('menu-backdrop');
     let menuOpen = false;
 
     function openMobileMenu() {
       menuOpen = true;
       mobileMenu.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      menuBackdrop.classList.add('open');
       hamburgerBtn.setAttribute('aria-expanded', 'true');
     }
 
     function closeMobileMenu() {
       menuOpen = false;
       mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
+      menuBackdrop.classList.remove('open');
       hamburgerBtn.setAttribute('aria-expanded', 'false');
     }
 
     if (hamburgerBtn) {
-      hamburgerBtn.addEventListener('click', openMobileMenu);
+      hamburgerBtn.addEventListener('click', () => {
+        menuOpen ? closeMobileMenu() : openMobileMenu();
+      });
     }
 
     // ============================================================
